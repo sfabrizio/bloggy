@@ -10,5 +10,8 @@
     "blog"
   ],
   "author": "Samuel Fabrizio",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
