@@ -1,0 +1,14 @@
+{
+  "name": "sam-blog",
+  "version": "0.0.1",
+  "description": "this a blog for do a test.. with express and react js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "Samuel Fabrizio",
+  "license": "MIT"
+}
