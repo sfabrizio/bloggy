@@ -4,7 +4,7 @@
   "description": "this a blog for do a test.. with express and react js",
   "main": "server.js",
   "scripts": {
-    "test": "jasmine-node test"
+    "test": "jasmine-node spec"
   },
   "keywords": [
     "blog"
