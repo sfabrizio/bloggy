@@ -4,7 +4,7 @@
   "description": "this a blog for do a test.. with express and react js",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine-node test"
   },
   "keywords": [
     "blog"
@@ -13,5 +13,9 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5",
+    "request": "^2.70.0"
   }
 }
