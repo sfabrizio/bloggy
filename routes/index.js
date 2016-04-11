@@ -1,5 +1,5 @@
 var fs = require('fs');
-var jsonPath = './test/data.json';
+var jsonPath = './spec/data.json';
 
 exports.index = function ( req, res, next ){
     res.send("Sam's blog");
