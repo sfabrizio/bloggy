@@ -1,9 +1,8 @@
 var http = require('http');
 var express = require('express');
 var routes = require('./routes');
-
-
 var app = express();
+
 
 // routes
 app.get(  '/',               routes.index );
@@ -21,7 +20,8 @@ function start() {
     });
 }
 
-exports.start = start;
-exports.app = app;
+exports.closeServer = function(){
+    server.close();
+};// this will we use on the specs run.
 
 start(); //automatically start form now.
