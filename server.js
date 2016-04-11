@@ -5,7 +5,7 @@ var app = express();
 
 
 // routes
-app.get(  '/',               routes.index );
+app.get(  '/',                routes.index );
 app.get(  '/api/getAll',      routes.getAll );
 app.post( '/api/create',      routes.create );
 app.get(  '/api/destroy/:id', routes.destroy );
