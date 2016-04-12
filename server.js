@@ -3,25 +3,21 @@ var express = require('express');
 var routes = require('./routes');
 var app = express();
 
+app.use(express.static('public'));
+app.use('/', express.static('public'));
 
-// routes
-app.get(  '/',                routes.index );
-app.get(  '/api/getAll',      routes.getAll );
-app.post( '/api/create',      routes.create );
-app.get(  '/api/destroy/:id', routes.destroy );
-app.get(  '/api/edit/:id',    routes.edit );
+// Set up Routes for the application
+require('./routes/index.js')(app);
 
+var config = {
+    port: 3000
+};
 var server = http.createServer(app);
-var port = app.get('port') || 3000;
 
-function start() {
-    server.listen(port, function () {
-        console.log('Express server listening on port: ' + port);
-    });
-}
+server.listen(config.port, function () {
+    console.log("Server started; listening on port " + config.port);
+});
 
 exports.closeServer = function(){
     server.close();
 };// this will we use on the specs run.
-
-start(); //automatically start form now.
