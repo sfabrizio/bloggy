@@ -1,5 +1,6 @@
 import React from "react";
 import BlogItemRow from "./BlogItemRow";
+import BlogEntryCreator from "./BlogEntryCreator";
 
 export default class Body extends React.Component {
     constructor() {
@@ -48,6 +49,7 @@ export default class Body extends React.Component {
         return (
             <div class="bodyList">
                 { this.parseData() }
+                <BlogEntryCreator />
             </div>
         );
     }
