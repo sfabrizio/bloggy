@@ -1,10 +1,10 @@
 import React from "react";
-import DeleteButton from "../Button/DeleteButton";
-import EditButton from "../Button/EditButton";
+import BlogItemRow from "./BlogItemRow";
 
 export default class Body extends React.Component {
     constructor() {
         super();
+        //mock-up data
         this.data = [
 
             {
@@ -33,13 +33,11 @@ export default class Body extends React.Component {
 
         for(let i in data){
             pairs.push(
-                <div>
-                    <div>{this.data[i].title}
-                        <EditButton itemId={this.data[i].id} />
-                        <DeleteButton itemId={this.data[i].id} />
-                    </div>
-                    <div>{this.data[i].content}</div>
-                </div>
+                <BlogItemRow
+                    id={this.data[i].id}
+                    title={this.data[i].title}
+                    content={this.data[i].content}
+                />
             );
         }
         return pairs;
