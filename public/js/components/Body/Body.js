@@ -34,6 +34,7 @@ export default class Body extends React.Component {
         for(let i in data){
             pairs.push(
                 <BlogItemRow
+                    key={this.data[i].id}
                     id={this.data[i].id}
                     title={this.data[i].title}
                     content={this.data[i].content}

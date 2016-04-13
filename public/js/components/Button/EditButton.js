@@ -5,18 +5,20 @@ export default class DeleteButton extends React.Component {
     constructor() {
         super();
         this.state = {
-            edit : false
+            mode : false
         };
     }
 
     editItem () {
         console.log('Edit item id:', this.props.itemId);
+        this.setState( { mode: !this.state.mode} );
+        this.props.toggleEditMode();
     }
 
     render() {
         return (
             <button class="button edit" onClick={this.editItem.bind(this)}>
-                Edit
+                { this.state.mode ? 'Save' : 'Edit' }
             </button>
         );
     }

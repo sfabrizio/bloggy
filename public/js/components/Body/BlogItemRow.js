@@ -10,26 +10,19 @@ export default class Body extends React.Component {
         };
     }
 
-    parseData () {
-        let pairs = [],
-            data = this.data;
-
-        for(let i in data){
-            pairs.push(
-
-            );
-        }
-        return pairs;
+    toggleEditMode() {
+        console.log('toggleEditMode', this.props.id);
+        this.setState({editMode: !this.state.editMode});
     }
 
     render() {
         return (
             <div>
-                <div>{this.props.title}
-                    <EditButton itemId={this.props.id} />
+                <div><span contentEditable={this.state.editMode}>{this.props.title}</span>
+                    <EditButton toggleEditMode={this.toggleEditMode.bind(this)} itemId={this.props.id} />
                     <DeleteButton itemId={this.props.id} />
                 </div>
-                <div>{this.props.content}</div>
+                <div contentEditable={this.state.editMode}>{this.props.content}</div>
             </div>
         );
     }
