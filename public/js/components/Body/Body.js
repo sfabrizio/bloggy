@@ -1,54 +1,54 @@
 import React from "react";
 import BlogItemRow from "./BlogItemRow";
 import BlogEntryCreator from "./BlogEntryCreator";
+import BlogStore from "../../stores/BlogStore";
+import * as BlogActions from "../../actions/BlogActions";
+
 
 export default class Body extends React.Component {
     constructor() {
         super();
-        //mock-up data
-        this.data = [
-
-            {
-                "id": 1,
-                "title": "Title 1",
-                "content": "This is the content of the blog post 1."
-            },
-
-            {
-                "id": 2,
-                "title": "Title 2",
-                "content": "This is the content of the blog post 2."
-            },
-
-            {
-                "id": 3,
-                "title": "Title 3",
-                "content": "This is the content of the blog post 3."
-            }
-        ];
+        this.state = {
+            blogs: BlogStore.getAll()
+        };
+        this.reloadBlogs();
     }
 
-    parseData () {
-        let pairs = [],
-            data = this.data;
+    componentWillMount() {
+        BlogStore.on("change", this.getBlogs.bind(this));
+    }
 
-        for(let i in data){
-            pairs.push(
-                <BlogItemRow
-                    key={this.data[i].id}
-                    id={this.data[i].id}
-                    title={this.data[i].title}
-                    content={this.data[i].content}
-                />
-            );
-        }
-        return pairs;
+    componentWillUnmount() {
+        BlogStore.removeListener("change", this.getBlogs);
+    }
+
+    getBlogs() {
+        this.setState({
+            blogs: BlogStore.getAll()
+        });
+    }
+
+    reloadBlogs() {
+        setInterval( () => {
+            console.log('fetching...');
+            BlogActions.reloadBlogs();
+        },5000);
     }
 
     render() {
+        const { blogs } = this.state;
+        const BlogEntries = blogs.map((entry) => {
+            return  <BlogItemRow
+                        key={entry.id}
+                        id={entry.id}
+                        title={entry.title}
+                        content={entry.content}
+                    />
+        });
+
         return (
             <div class="bodyList">
-                { this.parseData() }
+                { BlogEntries }
                 <BlogEntryCreator />
             </div>
         );
