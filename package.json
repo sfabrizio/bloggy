@@ -15,11 +15,14 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.4",
+    "flux": "^2.1.1",
     "react": "^15.0.1",
     "react-dom": "^15.0.1"
   },
   "babel": {
-    "presets": ["es2015"]
+    "presets": [
+      "es2015"
+    ]
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",
