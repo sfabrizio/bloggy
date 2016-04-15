@@ -17,12 +17,14 @@ class BlogStore extends EventEmitter {
         ];
     }
 
-    createTodo(title, content) {
-        const id = Date.now();
+    createBlog(data) {
+        const id = Date.now(),
+            title = data.data.title,
+            content = data.data.content;
 
-        this.todos.push({//thanks es6 xD
+        this.blogs.unshift({
             id,
-            title,
+            title,//thanks es6 for all the magic xD
             content
         });
 
@@ -36,7 +38,7 @@ class BlogStore extends EventEmitter {
     handleActions(action) {
         switch(action.type) {
             case "CREATE_BLOG": {
-                this.createBlog(action.title, action.content);
+                this.createBlog(action.data);
                 break;
             }
             case "RECEIVE_BLOGS": {
