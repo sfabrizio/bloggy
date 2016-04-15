@@ -4,14 +4,14 @@ export default class Header extends React.Component {
     constructor() {
         super();
         this.state = {
-            title: "Sam's blog"
+            title: "Bloggy"
         };
     }
 
     render() {
         return (
             <div class="header">
-                <div> { this.state.title } </div>
+                <div> <h1>{ this.state.title }</h1> </div>
             </div>
         );
     }
