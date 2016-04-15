@@ -15,31 +15,32 @@ routes.getAll = function ( req, res, next ){
 };
 
 routes.create = function ( req, res ){
-    var newData, jsonData;
+    var data, jsonData, newObj;
 
     req.on('data', function(chunk) {
-        newData = JSON.parse(chunk.toString()).data;
+        data = JSON.parse(chunk.toString()).data;
         //very simple validation
-        if (!newData || !newData.title || !newData.content){
+        if (!data || !data.title || !data.content){
             res.status(400).send({ error: 'Something failed!' });
         }
     });
     //let's read the json data file
-    fs.readFile(jsonPath, 'utf8', function (err, data) {
+    fs.readFile(jsonPath, 'utf8', function (err, file) {
         if (err) throw err;
-        jsonData = JSON.parse(data);
-        jsonData.blog.push({
+        jsonData = JSON.parse(file);
+        newObj = {
             "id": Date.now(),
-            "title": newData.title,
-            "content": newData.content
-        });
+            "title": data.title,
+            "content": data.content
+        };
+        jsonData.blog.push(newObj);
         //okey got it! let's write into the "DB" XD
         fs.writeFile(jsonPath, JSON.stringify(jsonData), function (err) {
             if (err){
                 console.log(err);
             }
         });
-        res.end('Created!');
+        res.json(newObj).end();
     });
 };
 
@@ -56,10 +57,10 @@ module.exports = function(app) { //routes setup
     app.get(  '/api/getAll',      routes.getAll );
     app.post( '/api/create',      routes.create );
     app.get(  '/api/remove/:id',  routes.remove );
-    app.get(  '/api/update/:id',  routes.update );
-    app.get('*', function(req, res) { //Route not found -- Set 404
-        res.json({
-            'route': 'Sorry this page does not exist.'
-        });
-    });
+    app.put(  '/api/update/:id',  routes.update );
+    // app.get('*', function(req, res) { //Route not found -- Set 404
+    //     res.json({
+    //         'route': 'Sorry this page does not exist.'
+    //     });
+    // });
 };
