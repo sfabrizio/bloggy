@@ -1,12 +1,12 @@
 {
-  "name": "sam-blog",
+  "name": "bloggy",
   "version": "0.0.1",
   "description": "this a blog for do a test.. with express and react js",
   "main": "server.js",
   "scripts": {
-    "start": "babel-node server.js",
+    "server": "webpack && node server.js",
     "test": "jasmine-node spec",
-    "dev": "webpack-dev-server --content-base public --inline --hot"
+    "dev": "./node_modules/.bin/webpack-dev-server --content-base public --inline --hot"
   },
   "keywords": [
     "blog"
@@ -25,6 +25,10 @@
       "es2015"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sfabrizio/bloggy.git"
+  },
   "devDependencies": {
     "babel-cli": "^6.7.5",
     "babel-core": "^6.7.6",
@@ -37,7 +41,6 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "jasmine-node": "^1.14.5",
-    "request": "^2.70.0",
     "webpack": "^1.12.15",
     "webpack-dev-server": "^1.14.1"
   }
