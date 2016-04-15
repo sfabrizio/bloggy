@@ -1,18 +1,50 @@
-# sam-blog-example
-This is a test of a Blog's app with Node and React
+Welcome to BloGGY
+===================
 
-## Intall dependencies
-```npm install```
 
-## Start the server
+Bloggy is a super blog ( just an example for now ) made it in **REACT**,**Node** and **Express** so far!
 
-```node start```
+----------
 
-## Running the tests
 
-```node test```
+Setup
+-------------
+1. First install dependencies
+```
+npm install
+```
 
-## API Doc
+ready! now just start the server..
 
-`http://localhost:3000/api/getAll` to get all the blog entries.
+----------
 
+Start the server
+----------
+
+```
+npm run server
+```
+
+> **Note:**
+>  This will make a bundle of the react front end and then it will start the server with the last bundle updated.
+
+
+If you want just run the backend run the follow one:
+
+```
+npm start
+```
+now you have the backend running on http://localhost:3000/
+
+For start the frontEnd dev server you need to run:
+
+```
+npm run dev
+```
+
+now you have a server dev running on http://localhost:8080/
+
+Running the tests
+----------
+
+```npm test```
