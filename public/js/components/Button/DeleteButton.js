@@ -10,7 +10,7 @@ export default class DeleteButton extends React.Component {
     }
 
     deleteItem () {
-        console.log('delete item id:', this.props.itemId);
+        this.props.action();
     }
 
     render() {

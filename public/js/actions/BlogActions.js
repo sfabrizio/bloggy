@@ -13,8 +13,7 @@ export function createBlog(data) {
 }
 
 export function deleteBlog(id) {
-
-    axios(`${baseURL}/api/remove`, {id}).then( (data) => {
+    axios.delete(`${baseURL}/api/remove/${id}`).then( (data) => {
         dispatcher.dispatch({
             type: "DELETE_BLOG",
             id

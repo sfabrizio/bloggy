@@ -46,9 +46,21 @@ class BlogStore extends EventEmitter {
                 this.emit("change");
                 break;
             }
+            case "DELETE_BLOG": {
+                this.blogs.splice(this.searchInJson(action.id), 1);
+            }
+                this.emit("change");
+                break;
+            }
+        }
+
+    searchInJson(id) {
+        for (let i=0 ; i < this.blogs.length ; i++) {
+            if (this.blogs[i]['id'] === id) {
+                return i;
+            }
         }
     }
-
 }
 
 const blogStore = new BlogStore;

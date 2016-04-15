@@ -1,6 +1,7 @@
 import React from "react";
 import DeleteButton from "../Button/DeleteButton";
 import EditButton from "../Button/EditButton";
+import * as BlogActions from "../../actions/BlogActions";
 
 export default class Body extends React.Component {
     constructor() {
@@ -11,8 +12,11 @@ export default class Body extends React.Component {
     }
 
     toggleEditMode() {
-        console.log('toggleEditMode', this.props.id);
         this.setState({editMode: !this.state.editMode});
+    }
+
+    deleteBlogItem() {
+        BlogActions.deleteBlog(this.props.id);
     }
 
     render() {
@@ -22,7 +26,7 @@ export default class Body extends React.Component {
                     <div className="title" contentEditable={this.state.editMode}>{this.props.title}</div>
                     <div className="title-buttons">
                         <EditButton toggleEditMode={this.toggleEditMode.bind(this)} itemId={this.props.id} />
-                        <DeleteButton itemId={this.props.id} />
+                        <DeleteButton action={this.deleteBlogItem.bind(this)} />
                     </div>
                 </div>
                 <div className="blog-item__content" contentEditable={this.state.editMode}>{this.props.content}</div>
