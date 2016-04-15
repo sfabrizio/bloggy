@@ -17,12 +17,15 @@ export default class Body extends React.Component {
 
     render() {
         return (
-            <div>
-                <div><span contentEditable={this.state.editMode}>{this.props.title}</span>
-                    <EditButton toggleEditMode={this.toggleEditMode.bind(this)} itemId={this.props.id} />
-                    <DeleteButton itemId={this.props.id} />
+            <div className="blog-item">
+                <div className="blog-item__title">
+                    <div className="title" contentEditable={this.state.editMode}>{this.props.title}</div>
+                    <div className="title-buttons">
+                        <EditButton toggleEditMode={this.toggleEditMode.bind(this)} itemId={this.props.id} />
+                        <DeleteButton itemId={this.props.id} />
+                    </div>
                 </div>
-                <div contentEditable={this.state.editMode}>{this.props.content}</div>
+                <div className="blog-item__content" contentEditable={this.state.editMode}>{this.props.content}</div>
             </div>
         );
     }

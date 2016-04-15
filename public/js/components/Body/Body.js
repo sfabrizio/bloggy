@@ -47,7 +47,7 @@ export default class Body extends React.Component {
         });
 
         return (
-            <div class="bodyList">
+            <div className="body">
                 { BlogEntries }
                 <BlogEntryCreator />
             </div>

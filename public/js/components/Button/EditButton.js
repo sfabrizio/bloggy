@@ -17,9 +17,9 @@ export default class DeleteButton extends React.Component {
 
     render() {
         return (
-            <button class="button edit" onClick={this.editItem.bind(this)}>
+            <a className="button button__edit" onClick={this.editItem.bind(this)}>
                 { this.state.mode ? 'Save' : 'Edit' }
-            </button>
+            </a>
         );
     }
 }

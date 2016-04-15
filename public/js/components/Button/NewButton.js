@@ -12,9 +12,9 @@ export default class DeleteButton extends React.Component {
 
     render() {
         return (
-            <button class="button delete" onClick={this.addItem.bind(this)}>
+            <a class="button button__add" onClick={this.addItem.bind(this)}>
                 Add
-            </button>
+            </a>
         );
     }
 }

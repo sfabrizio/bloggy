@@ -17,11 +17,12 @@ export default class BlogEntryCreator extends React.Component {
 
     render() {
         return (
-            <div>
-                <div><span contentEditable="true">New Blog Title</span>
-                    <NewButton />
+            <div className="blog-item">
+                <div className="blog-item__title">
+                    <div className="title" contentEditable="true">New Blog Title</div>
+                    <div className="title-buttons"><NewButton /></div>
                 </div>
-                <div contentEditable="true">New blog Description</div>
+                <div className="blog-item__content" contentEditable="true">New blog Description</div>
             </div>
         );
     }
