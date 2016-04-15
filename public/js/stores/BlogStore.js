@@ -7,10 +7,10 @@ class BlogStore extends EventEmitter {
         super();
 
         //this is a kind of initial load message.
-        // it will be overwrite in the first GET.
+        // it will be overwrite till the first GET :P
         this.blogs = [
             {
-                "id": 11,
+                "id": 38,
                 "title": "Loading..",
                 "content": ""
             }
@@ -20,7 +20,7 @@ class BlogStore extends EventEmitter {
     createTodo(title, content) {
         const id = Date.now();
 
-        this.todos.push({
+        this.todos.push({//thanks es6 xD
             id,
             title,
             content
@@ -40,7 +40,7 @@ class BlogStore extends EventEmitter {
                 break;
             }
             case "RECEIVE_BLOGS": {
-                this.blogs = action.blog.data.blog;
+                this.blogs = action.blog;
                 this.emit("change");
                 break;
             }

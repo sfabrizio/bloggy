@@ -11,11 +11,12 @@ export default class Body extends React.Component {
         this.state = {
             blogs: BlogStore.getAll()
         };
-        this.reloadBlogs();
     }
 
     componentWillMount() {
         BlogStore.on("change", this.getBlogs.bind(this));
+        BlogActions.reloadBlogs(); // first get
+        this.autoReloadBlogs(); // auto reload every 5s
     }
 
     componentWillUnmount() {
@@ -28,7 +29,7 @@ export default class Body extends React.Component {
         });
     }
 
-    reloadBlogs() {
+    autoReloadBlogs() {
         setInterval( () => {
             console.log('fetching...');
             BlogActions.reloadBlogs();
