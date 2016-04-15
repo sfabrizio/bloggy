@@ -50,7 +50,7 @@ export default class Body extends React.Component {
         return (
             <div className="body">
                 { BlogEntries }
-                <BlogEntryCreator />
+                <BlogEntryCreator createBlog={BlogActions.createBlog.bind(this)}/>
             </div>
         );
     }
