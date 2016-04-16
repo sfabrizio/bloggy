@@ -70,5 +70,4 @@ class BlogStore extends EventEmitter {
 
 const blogStore = new BlogStore;
 dispatcher.register(blogStore.handleActions.bind(blogStore));
-
 export default blogStore;

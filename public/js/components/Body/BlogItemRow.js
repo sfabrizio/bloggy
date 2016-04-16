@@ -67,7 +67,6 @@ export default class Body extends React.Component {
     }
 
     showErrorData () {
-        console.log('showerror', this.state.errorData);
         if (this.state.errorData){
             return <label className="error-label"> Invalid data: You need change the text first. </label>
         }
