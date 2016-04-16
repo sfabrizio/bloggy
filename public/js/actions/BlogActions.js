@@ -35,6 +35,16 @@ export function reloadBlogs() {
     dispatcher.dispatch({type: "FETCH_BLOGS"});
 }
 
+export function updateBlog(data) {
+    axios.put(`${baseURL}/api/update/${data.id}`, {data}).then( (res) => {
+        dispatcher.dispatch({
+            type: "UPDATE_BLOG",
+            data
+        });
+    });
+
+}
+
 //sort json array.
 function sortByKey(array, key) {
     return array.sort(function(a, b) {

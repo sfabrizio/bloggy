@@ -9,7 +9,7 @@ export default class Body extends React.Component {
         super();
         this.state = {
             editMode: false,
-            saveEvent: false
+            errorData: false
         };
     }
 
@@ -32,7 +32,28 @@ export default class Body extends React.Component {
     }
 
     saveEvent (){
-        console.log('--savee');
+        const title = this.refs.newTitle.outerText,
+            content = this.refs.newContent.outerText,
+            id = this.props.id;
+        console.log('isvalid', this.isValidData(title,content) );
+        //validation ok?
+        if ( this.isValidData(title,content) ){
+            this.setState({errorData: false}); //clean error
+            BlogActions.updateBlog({id, title, content});
+        } else { // no, so show me the general error
+            this.setState({errorData: true});
+        }
+    }
+
+     isValidData (title, content){
+
+         if ( !title  || !content ){
+            return false;
+         }
+         else if ( title === this.props.title && content === this.props.content ){
+             return false;
+         }
+         return true;
     }
 
     deleteBlogItem() {
@@ -45,14 +66,21 @@ export default class Body extends React.Component {
         this.setState({editMode: false});
     }
 
-
+    showErrorData () {
+        console.log('showerror', this.state.errorData);
+        if (this.state.errorData){
+            return <label className="error-label"> Invalid data: You need change the text first. </label>
+        }
+    }
 
     render() {
         return (
             <div className="blog-item">
+                {this.showErrorData.bind(this)()}
                 <div className="blog-item__title">
                     <div id={`title-${this.props.id}`}
                          className="title"
+                         ref="newTitle"
                          contentEditable={this.state.editMode}>{this.props.title}</div>
                     <div className="title-buttons">
                         <EditButton save={this.saveEvent.bind(this)} toggleEditMode={this.toggleEditMode.bind(this)} />
@@ -65,7 +93,7 @@ export default class Body extends React.Component {
                         })()}
                     </div>
                 </div>
-                <div className="blog-item__content" contentEditable={this.state.editMode}>{this.props.content}</div>
+                <div className="blog-item__content" ref="newContent" contentEditable={this.state.editMode}>{this.props.content}</div>
             </div>
         );
     }

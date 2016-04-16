@@ -124,7 +124,10 @@ body {
         background-color: orange;
     }
     /*buttons components*/
-
-
+    /*labels*/
+    .main-container label.error-label {
+        color: red;
+    }
+    /*labels*/
 
 
