@@ -130,4 +130,24 @@ body {
     }
     /*labels*/
 
-
+    /*footer*/
+    .main-container .footer {
+        background: #181819;
+        background: -webkit-linear-gradient(to left, #136a8a, #267871);
+        background: linear-gradient(to left, #1B1F1D, #101010);
+        color: slategrey;
+        text-align: center;
+        line-height: 3em;
+        height: 4px;
+        margin-top: 1em;
+        margin-bottom: -40px;
+        padding-bottom: 40px;
+    }
+    .main-container .footer a{
+        color: slategrey;
+        text-decoration: none;
+    }
+    .main-container .footer a:hover{
+        text-decoration: underline;
+    }
+    /*footer*/
