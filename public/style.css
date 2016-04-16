@@ -5,7 +5,7 @@ body {
     background-repeat: repeat-x, repeat;
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 14px;
-    line-height: 24px;
+    line-height: 34px;
     margin: 0 0 24px;
     text-align: justify;
     text-justify: inter-word;
@@ -75,6 +75,9 @@ body {
         padding-right: 40px;
         background: white;
         margin-bottom: 20px;
+        border: 1px solid black;
+        border-radius: 5px;
+        box-shadow: 0 7px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     }
         .main-container .blog-item .blog-item__title {
             display: flex;
