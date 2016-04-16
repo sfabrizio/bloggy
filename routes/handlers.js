@@ -45,32 +45,42 @@ handlers.create = function ( req, res ){
     });
 };
 
-handlers.update = function ( req, res, next ){
+handlers.update = function ( req, res ){
     var jsonData = {},
         updateId = req.params.id,
-        index,
-        data;
+        updateData;
 
     req.on('data', function(chunk) {
-        data = JSON.parse(chunk.toString()).data;
+        updateData = JSON.parse(chunk.toString()).data;
         //very simple validation
-        if (!data || !data.title || !data.content){
+        if (!updateData || !updateData.id || !updateData.title || !updateData.content){
             res.status(400).send({ error: 'Something failed!' });
         }
     });
 
-    fs.readFile(jsonPath, 'utf8', function (err, data) {
+    fs.readFile(jsonPath, 'utf8', function (err, readData) {
         if (err) throw err;
-        jsonData = JSON.parse(data);
-        index = utils.findIndexFromJsonArray(jsonData.blog, 'id', updateId);//warn this has to be async
-        jsonData.blog[index] = data;
-        // console.log('jsonData.blog', jsonData.blog);
-        // fs.writeFile(jsonPath, JSON.stringify(jsonData), function (err) {
-        //     if (err){
-        //         console.log(err);
-        //     }
-        // });
+        jsonData = JSON.parse(readData);
+        removeOldData(updateId, jsonData);
     });
+
+    function removeOldData(id, jsonData){
+        utils.findAndRemoveFromJsonArray(jsonData.blog, 'id', id);
+        updateJson(jsonData);
+    }
+
+    function updateJson(jsonData){
+        jsonData.blog.push(updateData);
+        writeNewJson(jsonData);
+    }
+
+    function writeNewJson(jsonData){
+        fs.writeFile(jsonPath, JSON.stringify(jsonData), function (err) {
+            if (err){
+                console.log(err);
+            }
+        });
+    }
 
     res.end();
 };
