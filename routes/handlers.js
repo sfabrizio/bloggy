@@ -92,13 +92,21 @@ handlers.remove = function ( req, res, next ){
     fs.readFile(jsonPath, 'utf8', function (err, data) {
         if (err) throw err;
         jsonData = JSON.parse(data);
-        utils.findAndRemoveFromJsonArray(jsonData.blog, 'id', delId);//warn this has to be async
+        removeData(delId, jsonData);
+    });
+
+    function removeData(id, jsonData){
+        utils.findAndRemoveFromJsonArray(jsonData.blog, 'id', id);
+        writeNewJson(jsonData);
+    }
+
+    function writeNewJson(jsonData){
         fs.writeFile(jsonPath, JSON.stringify(jsonData), function (err) {
             if (err){
                 console.log(err);
             }
         });
-    });
+    }
 
     res.end();
 };
