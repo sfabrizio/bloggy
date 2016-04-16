@@ -60,7 +60,7 @@ body {
         justify-content: center;
         padding: 50px;
         padding-left: 55px;
-        padding-right: 80px;
+        padding-right: 55px;
         margin-top: 45px;
     }
         .main-container .body .items-container{/* background: white; */}
@@ -99,7 +99,19 @@ body {
             padding-top: 20px;
             padding-bottom: 20px;
         }
-        /*blog item component */
+
+        .main-container .blog-item.item-creator .blog-item__title .title{
+            min-width: 150px;
+        }
+        /*item creator placeholders*/
+        .main-container .blog-item.item-creator .blog-item__title .title:empty:not(:focus):before{
+            content:attr(data-placeHolder)
+        }
+        .main-container .blog-item.item-creator .blog-item__content:empty:not(:focus):before{
+            content:attr(data-placeHolder)
+        }
+        /*item creator placeholders*/
+    /*blog item component */
 
     /*buttons components*/
     .main-container .button {

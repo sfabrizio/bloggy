@@ -4,7 +4,7 @@ var handlers = {};
 var utils = require('./utils');
 
 handlers.index = function ( req, res, next ){
-    res.send('please check the blog API');
+    res.send('please check the Bloggy API');
 };
 
 handlers.getAll = function ( req, res, next ){
@@ -23,33 +23,37 @@ handlers.create = function ( req, res ){
         //very simple validation
         if (!data || !data.title || !data.content){
             res.status(400).send({ error: 'Something failed!' });
+        } else {
+            readWriteFile(data);
         }
     });
-    //let's read the json data file
-    fs.readFile(jsonPath, 'utf8', function (err, file) {
-        if (err) throw err;
-        jsonData = JSON.parse(file);
-        newObj = {
-            "id": Date.now(),
-            "title": data.title,
-            "content": data.content
-        };
-        jsonData.blog.push(newObj);
-        //okey got it! let's write into the "DB" XD
-        fs.writeFile(jsonPath, JSON.stringify(jsonData), function (err) {
-            if (err){
-                console.log(err);
-            }
+
+    function readWriteFile(data) {
+        //let's read the json data file
+        fs.readFile(jsonPath, 'utf8', function (err, file) {
+            if (err) throw err;
+            jsonData = JSON.parse(file);
+            newObj = {
+                "id": Date.now(),
+                "title": data.title,
+                "content": data.content
+            };
+            jsonData.blog.push(newObj);
+            //okey got it! let's write into the "DB" XD
+            fs.writeFile(jsonPath, JSON.stringify(jsonData), function (err) {
+                if (err) {
+                    console.log(err);
+                }
+            });
+            res.json(newObj).end();
         });
-        res.json(newObj).end();
-    });
+    }
 };
 
 handlers.update = function ( req, res ){
     var jsonData = {},
         updateId = req.params.id,
         updateData;
-
     req.on('data', function(chunk) {
         updateData = JSON.parse(chunk.toString()).data;
         //very simple validation

@@ -6,9 +6,4 @@ module.exports = function(app) { //routes setup
     app.post(   '/api/create',      handlers.create );
     app.delete( '/api/remove/:id',  handlers.remove );
     app.put(    '/api/update/:id',  handlers.update );
-    app.get('*', function(req, res) { //Route not found -- Set 404
-        res.json({
-            'route': 'Sorry this page does not exist.'
-        });
-    });
 };

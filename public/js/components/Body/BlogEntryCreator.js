@@ -6,9 +6,10 @@ export default class BlogEntryCreator extends React.Component {
     constructor() {
         super();
         this.state = {
-            adding: false,
-            title: 'New Blog Title',
-            content: 'New blog Description'
+            renderError: false,
+            title: 'New Blog Post Title',
+            content: 'New Blog Post Content',
+            render: true
         };
     }
 
@@ -16,25 +17,65 @@ export default class BlogEntryCreator extends React.Component {
         const title = this.refs.newTitle.outerText,
             content = this.refs.newContent.outerText;
 
-        // this will avoid summit the initial text
-        if (title === this.state.title && content === this.state.content ){
+        this.setState({adding: !this.state.adding});
+
+        return {title, content};
+    }
+
+    createItem (){
+        const data = this.readUserInput();
+
+        if ( this.isValidData(data) ){//little validation
+            this.setState({renderError: false});
+            this.props.createBlog(data);
+            this.resetInputs();
+        } else{
+            this.setState({renderError: true});
+        }
+    }
+
+    isValidData (data){
+        if ( !data.title  || !data.content ){
             return false;
         }
-        this.setState({adding: !this.state.adding});
-        return {title, content};
+        else if ( data.title === this.props.title && data.content === this.props.content ){
+            return false;
+        }
+        return true;
+    }
+
+    showErrorData (){
+        if (this.state.renderError){
+            return <label className="error-label"> Invalid data: Please insert text first. </label>
+        }
+    }
+
+    resetInputs (){
+        const contentElement = document.getElementById(`content-empty`),
+            titleElement = document.getElementById(`title-empty`);
+        contentElement.innerHTML = '';
+        titleElement.innerHTML = '';
     }
 
     render() {
         return (
-            <div className="blog-item">
+            <div className="blog-item item-creator">
+                {this.showErrorData.bind(this)()}
                 <div className="blog-item__title">
-                    <div className="title" ref="newTitle" contentEditable="true">{this.state.title}</div>
+                    <div className="title"
+                         ref="newTitle"
+                         id='title-empty'
+                         data-placeHolder={this.state.title}
+                         contentEditable="true"></div>
                     <div className="title-buttons">
-                        <NewButton action={this.props.createBlog} read={this.readUserInput.bind(this)}/>
+                        <NewButton create={this.createItem.bind(this)} read={this.readUserInput.bind(this)}/>
                     </div>
                 </div>
                 <div className="blog-item__content"
-                     ref="newContent" contentEditable="true">{this.state.content}</div>
+                     ref="newContent"
+                     data-placeHolder={this.state.content}
+                     id='content-empty'
+                     contentEditable="true"></div>
             </div>
         );
     }

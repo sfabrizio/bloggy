@@ -35,7 +35,6 @@ export default class Body extends React.Component {
         const title = this.refs.newTitle.outerText,
             content = this.refs.newContent.outerText,
             id = this.props.id;
-        console.log('isvalid', this.isValidData(title,content) );
         //validation ok?
         if ( this.isValidData(title,content) ){
             this.setState({errorData: false}); //clean error
@@ -68,7 +67,7 @@ export default class Body extends React.Component {
 
     showErrorData () {
         if (this.state.errorData){
-            return <label className="error-label"> Invalid data: You need change the text first. </label>
+            return <label className="error-label"> Invalid data: Please enter some text first. </label>
         }
     }
 

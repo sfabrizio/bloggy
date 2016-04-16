@@ -7,11 +7,7 @@ export default class DeleteButton extends React.Component {
     }
 
     addItem () {
-        const data = this.props.read();
-        if (!data){//little validation
-            return;
-        }
-        this.props.action(data);// take this good data!
+        this.props.create();// whatever.. this component don't know!
     }
 
     render() {
