@@ -11,7 +11,7 @@ export default class Header extends React.Component {
     render() {
         return (
             <div class="header">
-                <div> <h1>{ this.state.title }</h1> </div>
+                <div><a href="/"><h1>{ this.state.title }</h1></a> <span>a super simple blog.</span></div>
             </div>
         );
     }

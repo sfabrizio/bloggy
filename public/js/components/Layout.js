@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "./Header/Header";
-import BodyList from "./Body/Body";
+import Body from "./Body/Body";
 
 export default class Layout extends React.Component {
     constructor() {
@@ -18,7 +18,7 @@ export default class Layout extends React.Component {
         return (
             <div>
                 <Header />
-                <BodyList />
+                <Body />
             </div>
         );
     }
