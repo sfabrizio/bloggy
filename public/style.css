@@ -9,6 +9,7 @@ body {
     margin: 0 0 24px;
     text-align: justify;
     text-justify: inter-word;
+    position: relative;
 }
 
 .main-container {
@@ -152,14 +153,13 @@ body {
         background: linear-gradient(to left, #1B1F1D, #101010);
         color: slategrey;
         text-align: center;
-        line-height: 3em;
-        height: 4px;
-        margin-top: 1em;
-        margin-bottom: 0px;
-        padding-bottom: 40px;
+        line-height: 3.5em;
+        height: 50px;
+        margin-bottom: -25px;
         position: absolute;
         bottom: 0;
-        width: 100%;
+        left:0;
+        right:0;
     }
     .main-container .footer a{
         color: slategrey;
