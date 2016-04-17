@@ -29,6 +29,7 @@ export default class BlogEntryCreator extends React.Component {
             this.setState({renderError: false});
             this.props.createBlog(data);
             this.resetInputs();
+            window.scrollTo(0,0);// scroll to the item created.
         } else{
             this.setState({renderError: true});
         }
