@@ -1,10 +1,11 @@
 {
   "name": "bloggy",
   "version": "0.0.1",
-  "description": "this a blog for do a test.. with express and react js",
+  "description": "Bloggy is a super simple blog made it with Node/Express and React/Flux",
   "main": "server.js",
   "scripts": {
-    "server": "webpack && node server.js",
+    "start": "webpack && node server.js",
+    "server": "node server.js",
     "test": "jasmine-node spec",
     "dev": "./node_modules/.bin/webpack-dev-server --content-base public --inline --hot"
   },
@@ -28,6 +29,9 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:sfabrizio/bloggy.git"
+  },
+  "engines": {
+    "node": "v5.10.1"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",

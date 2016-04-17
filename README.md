@@ -22,7 +22,7 @@ Start the server
 ----------
 
 ```
-npm run server
+npm start
 ```
 
 > **Note:**
@@ -32,7 +32,7 @@ npm run server
 If you want just run the backend run the follow one:
 
 ```
-npm start
+npm run server
 ```
 now you have the backend running on http://localhost:3000/
 
