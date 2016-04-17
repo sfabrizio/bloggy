@@ -9,13 +9,12 @@ app.use('/', express.static('public'));
 // Set up Routes for the application
 require('./routes/index.js')(app);
 
-var config = {
-    port: 3000
-};
+app.set('port', (process.env.PORT || 3000));
+
 var server = http.createServer(app);
 
-server.listen(config.port, function () {
-    console.log("Server started; listening on port " + config.port);
+server.listen(app.get('port'), function () {
+    console.log("Server started; listening on port " + app.get('port'));
 });
 
 exports.closeServer = function(){

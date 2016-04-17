@@ -1,11 +1,11 @@
 {
   "name": "bloggy",
-  "version": "0.0.1",
+  "version": "0.0.12",
   "description": "Bloggy is a super simple blog made it with Node/Express and React/Flux",
   "main": "server.js",
   "scripts": {
-    "start": "webpack && node server.js",
-    "server": "node server.js",
+    "start": "node server.js",
+    "server": "webpack && node server.js",
     "test": "jasmine-node spec",
     "dev": "./node_modules/.bin/webpack-dev-server --content-base public --inline --hot"
   },
