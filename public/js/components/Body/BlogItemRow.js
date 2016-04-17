@@ -57,7 +57,7 @@ export default class Body extends React.Component {
     }
 
     deleteBlogItem() {
-        //temp confirm dialog.. please don't prevent multiples alerts from the browser..
+        //temp confirm dialog.. please don't prevent multiples alerts on the browser..
         // if you did it, well you can re open the tab and will work again.
         let res = confirm('Are you sure that you want delete this item?');
         if (!res) {return;}
@@ -84,7 +84,7 @@ export default class Body extends React.Component {
     }
 
     calculateReadingTime () {
-        // The Average Reading Speed Is 200-250 Words Per Minute
+        // I found out that The Average Reading Speed Is 200-250 Words Per Minute.. so
         const wordsCount = this.props.content.split(' ').length;
         let result = parseInt(wordsCount / 200);
 
