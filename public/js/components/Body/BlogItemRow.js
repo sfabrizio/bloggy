@@ -2,6 +2,7 @@ import React from "react";
 import DeleteButton from "../Button/DeleteButton";
 import EditButton from "../Button/EditButton";
 import CancelButton from "../Button/CancelButton";
+import ShowButton from "../Button/ShowButton";
 import * as BlogActions from "../../actions/BlogActions";
 
 export default class Body extends React.Component {
@@ -56,6 +57,8 @@ export default class Body extends React.Component {
     }
 
     deleteBlogItem() {
+        //temp confirm dialog.. please don't prevent multiples alerts from the browser..
+        // if you did it, well you can re open the tab and will work again.
         let res = confirm('Are you sure that you want delete this item?');
         if (!res) {return;}
         BlogActions.deleteBlog(this.props.id);
@@ -71,27 +74,58 @@ export default class Body extends React.Component {
         }
     }
 
+    showMore (flag) {
+        let content = this.refs.newContent;
+        if (!flag) {
+            content.style.height = '100%';
+        } else {
+            content.style.height = '100px';
+        }
+    }
+
+    calculateReadingTime () {
+        // The Average Reading Speed Is 200-250 Words Per Minute
+        const wordsCount = this.props.content.split(' ').length;
+        let result = parseInt(wordsCount / 200);
+
+        if (result < 1){
+            return 1 + ' min.';
+        }
+        return result + ' mins.';
+    }
+
     render() {
         return (
             <div className="blog-item">
                 {this.showErrorData.bind(this)()}
                 <div className="blog-item__title">
-                    <div id={`title-${this.props.id}`}
-                         className="title"
+                    <div className="title"
                          ref="newTitle"
+                         id={`title-${this.props.id}`}
                          contentEditable={this.state.editMode}>{this.props.title}</div>
                     <div className="title-buttons">
                         <EditButton save={this.saveEvent.bind(this)} toggleEditMode={this.toggleEditMode.bind(this)} />
-                        {(() => {
+                        {( () => {
                             if (this.state.editMode) {
                                 return <CancelButton action={this.cancelEdit.bind(this)} />
                             }else{
                                 return <DeleteButton action={this.deleteBlogItem.bind(this)} />
                             }
-                        })()}
+                        }) ()}
                     </div>
                 </div>
-                <div className="blog-item__content" ref="newContent" contentEditable={this.state.editMode}>{this.props.content}</div>
+                <div className="blog-item__content">
+                    <div className="content" ref="newContent" contentEditable={this.state.editMode}>{this.props.content}</div>
+                    <label class="info-label"> Estimated Reading Time: {this.calculateReadingTime.bind(this)()}</label>
+                    <div className="content-buttons" ref="showMoreContent">
+                        {( () => {
+                                if (this.props.content.length > 550){
+                                    return <ShowButton action={this.showMore.bind(this)}/>
+                                }
+                        }) ()}
+
+                    </div>
+                </div>
             </div>
         );
     }

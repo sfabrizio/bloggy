@@ -16,6 +16,10 @@ body {
     display: flex;
     flex-direction: column;
 }
+    .main-container .blog-item__content{
+        display:flex;
+        flex-direction:column;
+    }
     /*header*/
     .main-container .header {
         background: #136a8a;
@@ -54,7 +58,20 @@ body {
             padding-bottom: 7px;
         }
     /*header*/
+
     /*body*/
+    .main-container .content {
+        height: 100px;
+        text-overflow: ellipsis;
+        padding-bottom: 10px;
+        overflow: hidden;
+    }
+    .main-container .content-buttons {
+        align-self: flex-end;
+    }
+    .main-container .info-label {
+        align-self: flex-end;
+    }
     .main-container .body{
         display: flex;
         flex-direction: column;
@@ -64,8 +81,8 @@ body {
         padding-right: 55px;
         margin-top: 45px;
     }
-        .main-container .body .items-container{/* background: white; */}
     /*body*/
+
     /*blog item component */
     .main-container .blog-item {
         display: flex;
@@ -104,6 +121,7 @@ body {
         .main-container .blog-item.item-creator .blog-item__title .title{
             min-width: 150px;
         }
+
         /*item creator placeholders*/
         .main-container .blog-item.item-creator .blog-item__title .title:empty:not(:focus):before{
             content:attr(data-placeHolder)
@@ -139,10 +157,17 @@ body {
     .main-container .button.button__cancel {
         background-color: orange;
     }
+    .main-container .button.button__show {
+        background-color: lightseagreen;
+    }
     /*buttons components*/
+
     /*labels*/
     .main-container label.error-label {
         color: red;
+    }
+    .main-container label.info-label {
+        color: gray;
     }
     /*labels*/
 
