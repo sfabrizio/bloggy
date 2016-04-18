@@ -11,7 +11,7 @@ class BlogStore extends EventEmitter {
         this.blogs = [
             {
                 "id": 38,
-                "title": "Loading..",
+                "title": "loading",
                 "content": ""
             }
         ];
