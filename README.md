@@ -1,4 +1,4 @@
-Welcome to BloGGY
+Welcome to Bloggy
 ===================
 
 
