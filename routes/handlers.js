@@ -59,12 +59,12 @@ handlers.update = function ( req, res ){
         if (!updateData || !updateData.id || !updateData.title || !updateData.content){
             res.status(400).send({ error: 'Something failed!' });
         }
-    });
 
-    fs.readFile(jsonPath, 'utf8', function (err, readData) {
-        if (err) throw err;
-        jsonData = JSON.parse(readData);
-        removeOldData(updateData.id, jsonData);
+        fs.readFile(jsonPath, 'utf8', function (err, readData) {
+            if (err) throw err;
+            jsonData = JSON.parse(readData);
+            removeOldData(updateData.id, jsonData);
+        });
     });
 
     function removeOldData(id, jsonData){
