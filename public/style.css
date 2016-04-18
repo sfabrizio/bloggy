@@ -170,6 +170,10 @@ body {
         text-decoration: none;
         margin-left: 10px;
         margin-right: 10px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 
     .main-container .button.button__delete {
