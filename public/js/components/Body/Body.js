@@ -40,7 +40,7 @@ export default class Body extends React.Component {
     render() {
         const { blogs } = this.state;
         const BlogEntries = blogs.map((entry) => {
-            if (entry.title === 'Loading...') { return  } // prevent show empty item
+            if (entry.title === 'Loading...') { return;  } // prevent show empty item
             return  <BlogItemRow key={entry.id} id={entry.id} title={entry.title} content={entry.content}/>
         });
 
@@ -51,10 +51,9 @@ export default class Body extends React.Component {
                 <div className="items-container">
                     { BlogEntries }
                     {( () => {
-                        if (this.state.blogs[0].title === 'Loading...') { return <Loading/>;  }
-                        <BlogEntryCreator createBlog={BlogActions.createBlog.bind(this)}/>
+                        if ( this.state.blogs.length && this.state.blogs[0].title === 'Loading...') { return <Loading/>;  }
+                        return <BlogEntryCreator createBlog={BlogActions.createBlog.bind(this)}/>;
                         }
-
                     )()}
                 </div>
             </div>
