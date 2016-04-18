@@ -84,9 +84,10 @@ export default class Body extends React.Component {
     }
 
     calculateReadingTime () {
-        // I found out that The Average Reading Speed Is 200-250 Words Per Minute.. so
+        // Hmm It's seem to be that The Average Reading Speed Is 150-180 Words Per Minute..
+        // so let's gonna use that number for now..
         const wordsCount = this.props.content.split(' ').length;
-        let result = parseInt(wordsCount / 200);
+        let result = parseInt(wordsCount / 150);
 
         if (result < 1){
             return 1 + ' min.';
