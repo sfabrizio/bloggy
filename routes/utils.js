@@ -11,7 +11,6 @@ utils.findIndexFromJsonArray = function (array, property, value) {
 
 utils.findAndRemoveFromJsonArray = function (array, property, value) {
     array.forEach(function(result, index) {
-        console.log('result[property',result[property], value);
         if(result[property] == value) {
             //Remove from array
             array.splice(index, 1);

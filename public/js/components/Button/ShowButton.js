@@ -10,8 +10,8 @@ export default class ShowButton extends React.Component {
     }
 
     toggle () {
+        this.props.action(!this.state.show);
         this.setState({show: !this.state.show});
-        this.props.action(this.state.show);
     }
 
     render() {

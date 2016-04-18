@@ -10,12 +10,21 @@ export default class Body extends React.Component {
         super();
         this.state = {
             editMode: false,
-            errorData: false
+            errorData: false,
+            showMoreButton: true
         };
     }
 
     toggleEditMode() {
         this.setState({editMode: !this.state.editMode}, this.focusTitle);
+        this.showMore(true);//automatically show the full text
+        this.setState({showMoreButton: false});//hide the button show more
+    }
+
+    cancelEdit () {
+        this.setState({editMode: false, errorData: false });
+        this.showMore(false);//hide the full text
+        this.setState({showMoreButton: true});//show the button show more
     }
 
     focusTitle() {
@@ -38,7 +47,8 @@ export default class Body extends React.Component {
             id = this.props.id;
         //validation ok?
         if ( this.isValidData(title,content) ){
-            this.setState({errorData: false}); //clean error
+            this.showMore(false);//show less on
+            this.setState({errorData: false, showMoreButton: true}); //clean error & show more on
             BlogActions.updateBlog({id, title, content});
         } else { // no, so show me the general error
             this.setState({errorData: true});
@@ -64,10 +74,6 @@ export default class Body extends React.Component {
         BlogActions.deleteBlog(this.props.id);
     }
 
-    cancelEdit () {
-        this.setState({editMode: false, errorData: false });
-    }
-
     showErrorData () {
         if (this.state.errorData){
             return <label className="error-label"> Invalid data: Please enter some text first. </label>
@@ -75,8 +81,9 @@ export default class Body extends React.Component {
     }
 
     showMore (flag) {
+        //with flag = true show the full text
         let content = this.refs.newContent;
-        if (!flag) {
+        if (flag) {
             content.style.height = '100%';
         } else {
             content.style.height = '100px';
@@ -123,7 +130,7 @@ export default class Body extends React.Component {
                     <label class="info-label"> Estimated Reading Time: {this.calculateReadingTime.bind(this)()}</label>
                     <div className="content-buttons" ref="showMoreContent">
                         {( () => {
-                                if (this.props.content.length > 550){
+                                if (this.props.content.length > 550 && this.state.showMoreButton){
                                     return <ShowButton action={this.showMore.bind(this)}/>
                                 }
                         }) ()}
