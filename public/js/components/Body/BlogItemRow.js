@@ -65,7 +65,7 @@ export default class Body extends React.Component {
     }
 
     cancelEdit () {
-        this.setState({editMode: false});
+        this.setState({editMode: false, errorData: false });
     }
 
     showErrorData () {
