@@ -1,6 +1,7 @@
 import React from "react";
 import BlogItemRow from "./BlogItemRow";
 import BlogEntryCreator from "./BlogEntryCreator";
+import Loading from "./Loading";
 import BlogStore from "../../stores/BlogStore";
 import * as BlogActions from "../../actions/BlogActions";
 
@@ -39,19 +40,22 @@ export default class Body extends React.Component {
     render() {
         const { blogs } = this.state;
         const BlogEntries = blogs.map((entry) => {
-            return  <BlogItemRow
-                        key={entry.id}
-                        id={entry.id}
-                        title={entry.title}
-                        content={entry.content}
-                    />
+            if (entry.title === 'Loading...') { return  } // prevent show empty item
+            return  <BlogItemRow key={entry.id} id={entry.id} title={entry.title} content={entry.content}/>
         });
+
+
 
         return (
             <div className="body">
                 <div className="items-container">
                     { BlogEntries }
-                    <BlogEntryCreator createBlog={BlogActions.createBlog.bind(this)}/>
+                    {( () => {
+                        if (this.state.blogs[0].title === 'Loading...') { return <Loading/>;  }
+                        <BlogEntryCreator createBlog={BlogActions.createBlog.bind(this)}/>
+                        }
+
+                    )()}
                 </div>
             </div>
         );

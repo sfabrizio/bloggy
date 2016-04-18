@@ -97,6 +97,20 @@ body {
         border-radius: 5px;
         box-shadow: 0 7px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     }
+        /* loading */
+        .blog-item.loading {
+            display:flex;
+            align-items: center;
+            min-height: 300px;
+        }
+            .blog-item.loading div{
+                align-self: center;
+            }
+            .blog-item.loading div img{
+                margin-top: 25px;
+                padding-left: 20px;
+            }
+        /* loading */
         .main-container .blog-item .blog-item__title {
             display: flex;
             flex-direction: row;
