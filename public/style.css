@@ -111,6 +111,21 @@ body {
                 padding-left: 20px;
             }
         /* loading */
+
+        /*label on top of items*/
+        .blog-item .top-label{
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-item .top-label .error-label{
+            align-self: flex-start;
+        }
+        .blog-item .top-label .info-label{
+            align-self: flex-end;
+        }
+        /*label on top of items*/
+
+
         .main-container .blog-item .blog-item__title {
             display: flex;
             flex-direction: row;

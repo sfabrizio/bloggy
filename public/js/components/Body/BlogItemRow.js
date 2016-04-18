@@ -98,7 +98,10 @@ export default class Body extends React.Component {
     render() {
         return (
             <div className="blog-item">
-                {this.showErrorData.bind(this)()}
+                <div className="top-label">
+                    <label class="info-label"> Created on  {Date(this.props.id)} </label>
+                    {this.showErrorData.bind(this)()}
+                </div>
                 <div className="blog-item__title">
                     <div className="title"
                          ref="newTitle"
