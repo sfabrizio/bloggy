@@ -52,7 +52,6 @@ handlers.create = function ( req, res ){
 
 handlers.update = function ( req, res ){
     var jsonData = {},
-        updateId = req.params.id,
         updateData;
     req.on('data', function(chunk) {
         updateData = JSON.parse(chunk.toString()).data;
@@ -65,7 +64,7 @@ handlers.update = function ( req, res ){
     fs.readFile(jsonPath, 'utf8', function (err, readData) {
         if (err) throw err;
         jsonData = JSON.parse(readData);
-        removeOldData(updateId, jsonData);
+        removeOldData(updateData.id, jsonData);
     });
 
     function removeOldData(id, jsonData){
