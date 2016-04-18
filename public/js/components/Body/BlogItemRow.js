@@ -99,7 +99,7 @@ export default class Body extends React.Component {
         return (
             <div className="blog-item">
                 <div className="top-label">
-                    <label class="info-label"> Created on  {Date(this.props.id)} </label>
+                    <label class="info-label"> Created on  {new Date((this.props.id)).toDateString()} </label>
                     {this.showErrorData.bind(this)()}
                 </div>
                 <div className="blog-item__title">
