@@ -4,9 +4,6 @@ import React from "react";
 export default class DeleteButton extends React.Component {
     constructor() {
         super();
-        this.state = {
-            text : "Delete"
-        };
     }
 
     deleteItem () {

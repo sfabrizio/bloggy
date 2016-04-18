@@ -1,6 +1,7 @@
 import React from "react";
 import DeleteButton from "../Button/DeleteButton";
 import EditButton from "../Button/EditButton";
+import SaveButton from "../Button/SaveButton";
 import CancelButton from "../Button/CancelButton";
 import ShowButton from "../Button/ShowButton";
 import * as BlogActions from "../../actions/BlogActions";
@@ -48,7 +49,7 @@ export default class Body extends React.Component {
         //validation ok?
         if ( this.isValidData(title,content) ){
             this.showMore(false);//show less on
-            this.setState({errorData: false, showMoreButton: true}); //clean error & show more on
+            this.setState({editMode: false, errorData: false, showMoreButton: true}); //clean error & show more on
             BlogActions.updateBlog({id, title, content});
         } else { // no, so show me the general error
             this.setState({errorData: true});
@@ -115,19 +116,30 @@ export default class Body extends React.Component {
                          id={`title-${this.props.id}`}
                          contentEditable={this.state.editMode}>{this.props.title}</div>
                     <div className="title-buttons">
-                        <EditButton save={this.saveEvent.bind(this)} toggleEditMode={this.toggleEditMode.bind(this)} />
-                        {( () => {
-                            if (this.state.editMode) {
-                                return <CancelButton action={this.cancelEdit.bind(this)} />
-                            }else{
-                                return <DeleteButton action={this.deleteBlogItem.bind(this)} />
+                        {( () => {//initial state buttons
+                            if (!this.state.editMode) {
+                                return [<EditButton action={this.toggleEditMode.bind(this)} />,
+                                        <DeleteButton action={this.deleteBlogItem.bind(this)} />];
                             }
-                        }) ()}
+                        })()}
+
+                        {(() => {//on edit mode:
+                            if (this.state.editMode) {
+                                return [<SaveButton action={this.saveEvent.bind(this)} />,
+                                        <CancelButton action={this.cancelEdit.bind(this)} />];
+                            }
+                        })()}
+
                     </div>
                 </div>
                 <div className="blog-item__content">
                     <div className="content" ref="newContent" contentEditable={this.state.editMode}>{this.props.content}</div>
-                    <label class="info-label"> Estimated Reading Time: {this.calculateReadingTime.bind(this)()}</label>
+                        {(() => {//hide estimate time on edition mode
+                            if (this.state.showMoreButton){
+                                return <label class="info-label"> Estimated Reading Time: {this.calculateReadingTime.bind(this)()}</label>;
+                            }
+                            }
+                        )()}
                     <div className="content-buttons" ref="showMoreContent">
                         {( () => {
                                 if (this.props.content.length > 550 && this.state.showMoreButton){
