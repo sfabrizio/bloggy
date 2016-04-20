@@ -2,7 +2,7 @@ Welcome to Bloggy
 ===================
 
 
-Bloggy is a super blog ( just an example for now ) made it in **REACT**,**Node** and **Express** so far!
+Bloggy is a super simple blog  made it in **REACT**,**Node** and **Express** so far!
 
 ----------
 
@@ -48,3 +48,17 @@ Running the tests
 ----------
 
 ```npm test```
+
+
+TODO
+--------
+
+- restructure the folder’s project, add doc about that
+- change from flux to redux
+- fix some react component complesity
+- add SASS and migrate the existing CSS code..
+- add Fly config to do automatics deploys
+- add Mongo DB and refactor the API according to that.
+- add unit testing in frontEnd and also in backEnd.
+
+
