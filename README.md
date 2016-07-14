@@ -1,10 +1,14 @@
-Welcome to Bloggy
+Bloggy
 ===================
 
 
 Bloggy is a super simple blog  made it in **REACT**,**Node** and **Express** so far!
 
+> This suppose to be a project for play with React/Express. But well It's starting to take shape and I'm going to continue working on it. 
+I want to use it like my personal blog. Maybe someone would like use it or work on this too. That would be great.
+I'm still have a lot of features/ideas to implement. 
 ----------
+
 
 
 Setup
@@ -14,7 +18,7 @@ Setup
 npm install
 ```
 
-ready! now just start the server..
+ready, now just start the server..
 
 ----------
 
@@ -50,20 +54,21 @@ Running the tests
 ```npm test```
 
 
-TODO
+TODO (WIP)
 --------
+
+- backend:
+  - implement swagger
+  - implement Mongo Database
+  - add Fly config to do automatics deploys
+
+- frontend:
+ - change from flux to redux
+ - fix some react component complesity
+ - add SASS and migrate the existing CSS code.
 
 - fix eslint warnings
 - add unit testing.
-- add CI
-- add new features
+- add Travis CI
 
-backend:
-- implement swagger
-- implement Mongo Database
-- add Fly config to do automatics deploys
-
-frontend:
-- change from flux to redux
-- fix some react component complesity
-- add SASS and migrate the existing CSS code.
+- keep working in new features
