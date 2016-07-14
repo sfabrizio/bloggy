@@ -4,14 +4,18 @@
   "description": "Bloggy is a super simple blog made it with Node/Express and React/Flux",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "webpack && node server.js",
+    "start": "node server/server.js",
+    "server": "webpack && node ./server/server.js",
     "test": "jasmine-node spec",
     "dev": "./node_modules/.bin/webpack-dev-server --content-base public --inline --hot"
   },
-  "keywords": [
-    "blog"
-  ],
+  "engines": {
+    "node": "6.3.0"
+  },
+  "babel": {
+    "presets": ["es2015", "stage-0"]
+  },
+  "keywords": ["blog"],
   "author": "Samuel Fabrizio",
   "license": "MIT",
   "dependencies": {
@@ -21,17 +25,9 @@
     "react-dom": "^15.0.1",
     "axios": "^0.9.1"
   },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git@github.com:sfabrizio/bloggy.git"
-  },
-  "engines": {
-    "node": "v4.2.1"
   },
   "devDependencies": {
     "jasmine-node": "^1.14.5",
