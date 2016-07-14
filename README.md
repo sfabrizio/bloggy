@@ -36,7 +36,7 @@ npm run start
 ```
 now you have the backend running on http://localhost:3000/
 
-For start the frontEnd dev server you need to run:
+For start the frontEnd dev server with hot reloading you just need to run:
 
 ```
 npm run dev
@@ -53,12 +53,17 @@ Running the tests
 TODO
 --------
 
-- restructure the folder’s project, add doc about that
+- fix eslint warnings
+- add unit testing.
+- add CI
+- add new features
+
+backend:
+- implement swagger
+- implement Mongo Database
+- add Fly config to do automatics deploys
+
+frontend:
 - change from flux to redux
 - fix some react component complesity
-- add SASS and migrate the existing CSS code..
-- add Fly config to do automatics deploys
-- add Mongo DB and refactor the API according to that.
-- add unit testing in frontEnd and also in backEnd.
-
-
+- add SASS and migrate the existing CSS code.
