@@ -45,6 +45,13 @@ export function updateBlog(data) {
 
 }
 
+export function filterBlog(query) {
+    dispatcher.dispatch({
+        type: "FILTER_BLOG",
+        query
+    });
+}
+
 //sort json array.
 function sortByKey(array, key) {
     return array.sort(function(a, b) {
