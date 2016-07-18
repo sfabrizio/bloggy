@@ -1,4 +1,5 @@
-Bloggy
+Bloggy [![Build Status](https://travis-ci.org/sfabrizio/bloogy.svg?branch=master)](https://travis-ci.org/sfabrizio/bloggy)
+ 
 ===================
 
 
