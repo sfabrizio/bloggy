@@ -1,4 +1,6 @@
-# Bloggy [![Build Status](https://travis-ci.org/sfabrizio/bloggy.svg?branch=master)](https://travis-ci.org/sfabrizio/bloggy)
+[![Build Status](https://travis-ci.org/sfabrizio/bloggy.svg?branch=master)](https://travis-ci.org/sfabrizio/bloggy) [![bitHound Overall Score](https://www.bithound.io/github/sfabrizio/bloggy/badges/score.svg)](https://www.bithound.io/github/sfabrizio/bloggy)
+
+# Bloggy
 
 
 Bloggy is a super simple blog  made it in **REACT**,**Node** and **Express** so far!
@@ -67,6 +69,5 @@ TODO (WIP)
 
 - fix eslint warnings
 - add unit testing.
-- add Travis CI
 
 - keep working in new features
