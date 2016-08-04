@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NewButton from '../Button/NewButton';
+import '../Button/NewButton';
 
 export default class BlogEntryCreator extends React.Component {
     constructor() {
@@ -38,8 +38,7 @@ export default class BlogEntryCreator extends React.Component {
     isValidData (data) {
         if ( !data.title  || !data.content ) {
             return false;
-        }
-        else if ( data.title === this.props.title && data.content === this.props.content ) {
+        } else if ( data.title === this.props.title && data.content === this.props.content ) {
             return false;
         }
         return true;
@@ -54,6 +53,7 @@ export default class BlogEntryCreator extends React.Component {
     resetInputs () {
         const contentElement = document.getElementById('content-empty'),
             titleElement = document.getElementById('title-empty');
+
         contentElement.innerHTML = '';
         titleElement.innerHTML = '';
     }

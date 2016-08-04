@@ -1,9 +1,9 @@
 import React from 'react';
-import BlogItemRow from './BlogItemRow';
-import BlogEntryCreator from './BlogEntryCreator';
-import Loading from './Loading';
 import BlogStore from '../../stores/BlogStore';
 import * as BlogActions from '../../actions/BlogActions';
+import './BlogItemRow';
+import './BlogEntryCreator';
+import './Loading';
 
 
 export default class Body extends React.Component {
@@ -32,17 +32,19 @@ export default class Body extends React.Component {
 
     autoReloadBlogs() {
         setInterval( () => {
+            /*eslint-disable*/
             console.log('fetching...');
+            /*eslint-enable*/
             BlogActions.reloadBlogs();
         },5000);
     }
 
     render() {
-        const { blogs } = this.state;
-        const BlogEntries = blogs.map((entry) => {
-            if (entry.title === 'loading') { return;  } // prevent show empty item
-            return  <BlogItemRow key={entry.id} id={entry.id} title={entry.title} content={entry.content}/>;
-        });
+        const { blogs } = this.state,
+            BlogEntries = blogs.map((entry) => {
+                if (entry.title === 'loading') { return;  } // prevent show empty item
+                return  <BlogItemRow key={entry.id} id={entry.id} title={entry.title} content={entry.content}/>;
+            });
 
 
 

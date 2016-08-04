@@ -10,7 +10,8 @@ export default class SearchBox extends React.Component {
     }
 
     doSearch () {
-        let query=this.refs.searchInput.value; // this is the search text
+        const query = this.refs.searchInput.value; // this is the search text
+
         this.props.search(query);
     }
 

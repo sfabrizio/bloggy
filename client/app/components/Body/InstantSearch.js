@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchBox from './SearchBox';
-import Body from './Body';
 import BlogStore from '../../stores/BlogStore';
+import './SearchBox';
+import './Body';
 
 export default class InstantSearch extends React.Component {
     constructor() {
@@ -13,19 +13,20 @@ export default class InstantSearch extends React.Component {
     }
 
     doSearch (queryText) {
-        console.log(queryText);
+        // console.log(queryText);
 
         //get query result
-        var queryResult=[];
+        let queryResult=[];
+
         this.props.data.forEach(function(blog) {
-            if (blog.title.toLowerCase().indexOf(queryText)!=-1)
+            if (blog.title.toLowerCase().indexOf(queryText) !== -1) {
                 queryResult.push(blog);
+            }
         });
         this.setState({
             query:queryText,
             filteredData: queryResult
         });
-
         // BlogStore.blogs = queryResult;
         // BlogStore.emit("change");
     }

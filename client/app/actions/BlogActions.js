@@ -23,6 +23,7 @@ export function deleteBlog(id) {
 export function reloadBlogs() {
     axios(`${baseURL}/api/getAll`).then( (data) => {
         const parsedData  = sortByKey(data.data.blog, 'id');
+
         dispatcher.dispatch({
             type: 'RECEIVE_BLOGS',
             blog: parsedData
@@ -51,7 +52,9 @@ export function filterBlog(query) {
 //sort json array.
 function sortByKey(array, key) {
     return array.sort(function(a, b) {
-        var x = a[key]; var y = b[key];
+        var x = a[key],
+            y = b[key];
+
         return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     }).reverse();
 }

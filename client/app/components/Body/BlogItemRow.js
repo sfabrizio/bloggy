@@ -1,10 +1,10 @@
 import React from 'react';
-import DeleteButton from '../Button/DeleteButton';
-import EditButton from '../Button/EditButton';
-import SaveButton from '../Button/SaveButton';
-import CancelButton from '../Button/CancelButton';
-import ShowButton from '../Button/ShowButton';
 import * as BlogActions from '../../actions/BlogActions';
+import '../Button/DeleteButton';
+import '../Button/EditButton';
+import '../Button/SaveButton';
+import '../Button/CancelButton';
+import '../Button/ShowButton';
 
 export default class Body extends React.Component {
     constructor() {
@@ -71,6 +71,7 @@ export default class Body extends React.Component {
         //temp confirm dialog.. please don't prevent multiples alerts on the browser..
         // if you did it, well you can re open the tab and will work again.
         const res = confirm('Are you sure that you want delete this item?');
+
         if (!res) {return;}
         BlogActions.deleteBlog(this.props.id);
     }
@@ -108,7 +109,7 @@ export default class Body extends React.Component {
         return (
             <div className="blog-item">
                 <div className="top-label">
-                    <label class="info-label"> Created on  {new Date((this.props.id)).toDateString()} </label>
+                    <label className="info-label"> Created on  {new Date((this.props.id)).toDateString()} </label>
                     {this.showErrorData.bind(this)()}
                 </div>
                 <div className="blog-item__title">
