@@ -1,10 +1,10 @@
-import React from "react";
-import DeleteButton from "../Button/DeleteButton";
-import EditButton from "../Button/EditButton";
-import SaveButton from "../Button/SaveButton";
-import CancelButton from "../Button/CancelButton";
-import ShowButton from "../Button/ShowButton";
-import * as BlogActions from "../../actions/BlogActions";
+import React from 'react';
+import DeleteButton from '../Button/DeleteButton';
+import EditButton from '../Button/EditButton';
+import SaveButton from '../Button/SaveButton';
+import CancelButton from '../Button/CancelButton';
+import ShowButton from '../Button/ShowButton';
+import * as BlogActions from '../../actions/BlogActions';
 
 export default class Body extends React.Component {
     constructor() {
@@ -29,11 +29,12 @@ export default class Body extends React.Component {
     }
 
     focusTitle() {
-        if (this.state.editMode){
+        if (this.state.editMode) {
             const el = document.getElementById(`title-${this.props.id}`),
                 range = document.createRange(),
                 sel = window.getSelection(),
                 text = el.childNodes[0];
+
             range.setStart(el.childNodes[0], text.length);//point to the end
             range.collapse(true);
             sel.removeAllRanges();
@@ -46,7 +47,8 @@ export default class Body extends React.Component {
         const title = this.refs.newTitle.outerText,
             content = this.refs.newContent.outerText,
             id = this.props.id;
-        //validation ok?
+
+        //validation
         if ( this.isValidData(title,content) ){
             this.showMore(false);//show less on
             this.setState({editMode: false, errorData: false, showMoreButton: true}); //clean error & show more on
@@ -56,21 +58,19 @@ export default class Body extends React.Component {
         }
     }
 
-     isValidData (title, content){
-
-         if ( !title  || !content ){
+    isValidData (title, content) {
+        if ( !title  || !content ) {
             return false;
-         }
-         else if ( title === this.props.title && content === this.props.content ){
-             return false;
-         }
-         return true;
+        } else if ( title === this.props.title && content === this.props.content ) {
+            return false;
+        }
+        return true;
     }
 
     deleteBlogItem() {
         //temp confirm dialog.. please don't prevent multiples alerts on the browser..
         // if you did it, well you can re open the tab and will work again.
-        let res = confirm('Are you sure that you want delete this item?');
+        const res = confirm('Are you sure that you want delete this item?');
         if (!res) {return;}
         BlogActions.deleteBlog(this.props.id);
     }
@@ -83,7 +83,8 @@ export default class Body extends React.Component {
 
     showMore (flag) {
         //with flag = true show the full text
-        let content = this.refs.newContent;
+        const content = this.refs.newContent;
+
         if (flag) {
             content.style.height = '100%';
         } else {
@@ -97,7 +98,7 @@ export default class Body extends React.Component {
         const wordsCount = this.props.content.split(' ').length;
         let result = parseInt(wordsCount / 150);
 
-        if (result < 1){
+        if (result < 1) {
             return 1 + ' min.';
         }
         return result + ' mins.';
