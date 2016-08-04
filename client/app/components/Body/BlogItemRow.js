@@ -43,13 +43,13 @@ export default class Body extends React.Component {
         }
     }
 
-    saveEvent (){
+    saveEvent () {
         const title = this.refs.newTitle.outerText,
             content = this.refs.newContent.outerText,
             id = this.props.id;
 
         //validation
-        if ( this.isValidData(title,content) ){
+        if ( this.isValidData(title,content) ) {
             this.showMore(false);//show less on
             this.setState({editMode: false, errorData: false, showMoreButton: true}); //clean error & show more on
             BlogActions.updateBlog({id, title, content});
@@ -76,8 +76,8 @@ export default class Body extends React.Component {
     }
 
     showErrorData () {
-        if (this.state.errorData){
-            return <label className="error-label"> Invalid data: Please enter some text first. </label>
+        if (this.state.errorData) {
+            return <label className="error-label"> Invalid data: Please enter some text first. </label>;
         }
     }
 
@@ -136,16 +136,16 @@ export default class Body extends React.Component {
                 <div className="blog-item__content">
                     <div className="content" ref="newContent" contentEditable={this.state.editMode}>{this.props.content}</div>
                         {(() => {//hide estimate time on edition mode
-                            if (this.state.showMoreButton){
+                            if (this.state.showMoreButton) {
                                 return <label class="info-label"> Estimated Reading Time: {this.calculateReadingTime.bind(this)()}</label>;
                             }
-                            }
+                        }
                         )()}
                     <div className="content-buttons" ref="showMoreContent">
                         {( () => {
-                                if (this.props.content.length > 550 && this.state.showMoreButton){
-                                    return <ShowButton action={this.showMore.bind(this)}/>
-                                }
+                            if (this.props.content.length > 550 && this.state.showMoreButton) {
+                                return <ShowButton action={this.showMore.bind(this)}/>;
+                            }
                         }) ()}
 
                     </div>

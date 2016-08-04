@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import NewButton from "../Button/NewButton";
+import NewButton from '../Button/NewButton';
 
 export default class BlogEntryCreator extends React.Component {
     constructor() {
@@ -22,38 +22,38 @@ export default class BlogEntryCreator extends React.Component {
         return {title, content};
     }
 
-    createItem (){
+    createItem () {
         const data = this.readUserInput();
 
-        if ( this.isValidData(data) ){//little validation
+        if ( this.isValidData(data) ) {//little validation
             this.setState({renderError: false});
             this.props.createBlog(data);
             this.resetInputs();
             window.scrollTo(0,0);// scroll to the item created.
-        } else{
+        } else {
             this.setState({renderError: true});
         }
     }
 
-    isValidData (data){
-        if ( !data.title  || !data.content ){
+    isValidData (data) {
+        if ( !data.title  || !data.content ) {
             return false;
         }
-        else if ( data.title === this.props.title && data.content === this.props.content ){
+        else if ( data.title === this.props.title && data.content === this.props.content ) {
             return false;
         }
         return true;
     }
 
-    showErrorData (){
-        if (this.state.renderError){
-            return <label className="error-label"> Invalid data: Please insert text first. </label>
+    showErrorData () {
+        if (this.state.renderError) {
+            return <label className="error-label"> Invalid data: Please insert text first. </label>;
         }
     }
 
-    resetInputs (){
-        const contentElement = document.getElementById(`content-empty`),
-            titleElement = document.getElementById(`title-empty`);
+    resetInputs () {
+        const contentElement = document.getElementById('content-empty'),
+            titleElement = document.getElementById('title-empty');
         contentElement.innerHTML = '';
         titleElement.innerHTML = '';
     }

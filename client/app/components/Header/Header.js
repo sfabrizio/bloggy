@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 export default class Header extends React.Component {
     constructor() {
         super();
         this.state = {
-            title: "Bloggy"
+            title: 'Bloggy'
         };
     }
 

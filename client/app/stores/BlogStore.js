@@ -1,6 +1,6 @@
-import { EventEmitter } from "events";
+import { EventEmitter } from 'events';
 
-import dispatcher from "../dispatcher";
+import dispatcher from '../dispatcher';
 
 class BlogStore extends EventEmitter {
     constructor() {
@@ -10,9 +10,9 @@ class BlogStore extends EventEmitter {
         // it will be overwrite till the first GET :P
         this.blogs = [
             {
-                "id": 38,
-                "title": "loading",
-                "content": ""
+                'id': 38,
+                'title': 'loading',
+                'content': ''
             }
         ];
     }
@@ -28,7 +28,7 @@ class BlogStore extends EventEmitter {
             content
         });
 
-        this.emit("change");
+        this.emit('change');
     }
 
     getAll() {
@@ -36,26 +36,26 @@ class BlogStore extends EventEmitter {
     }
 
     handleActions(action) {
-        switch(action.type) {
-            case "CREATE_BLOG": {
-                this.createBlog(action.data);
-                break;
-            }
-            case "RECEIVE_BLOGS": {
-                this.blogs = action.blog;
-                this.emit("change");
-                break;
-            }
-            case "DELETE_BLOG": {
-                this.blogs.splice(this.searchInJson(action.id), 1);
-                this.emit("change");
-                break;
-            }
-            case "UPDATE_BLOG": {
-                this.blogs[ this.searchInJson(action.data.id) ] = action.data;
-                this.emit("change");
-                break;
-            }
+        switch (action.type) {
+        case 'CREATE_BLOG': {
+            this.createBlog(action.data);
+            break;
+        }
+        case 'RECEIVE_BLOGS': {
+            this.blogs = action.blog;
+            this.emit('change');
+            break;
+        }
+        case 'DELETE_BLOG': {
+            this.blogs.splice(this.searchInJson(action.id), 1);
+            this.emit('change');
+            break;
+        }
+        case 'UPDATE_BLOG': {
+            this.blogs[ this.searchInJson(action.data.id) ] = action.data;
+            this.emit('change');
+            break;
+        }
         }
     }
 

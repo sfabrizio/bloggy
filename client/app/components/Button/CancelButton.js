@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 
 export default class DeleteButton extends React.Component {
     constructor() {
         super();
         this.state = {
-            text : "Cancel"
+            text : 'Cancel'
         };
     }
 

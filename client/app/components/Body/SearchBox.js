@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
 
 export default class SearchBox extends React.Component {
     constructor() {
         super();
         this.state = {
-            text : "Search"
+            text : 'Search'
         };
     }
 
-    doSearch (){
+    doSearch () {
         let query=this.refs.searchInput.value; // this is the search text
         this.props.search(query);
     }
