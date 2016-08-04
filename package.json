@@ -13,9 +13,14 @@
     "node": "6.3.0"
   },
   "babel": {
-    "presets": ["es2015", "stage-0"]
+    "presets": [
+      "es2015",
+      "stage-0"
+    ]
   },
-  "keywords": ["blog"],
+  "keywords": [
+    "blog"
+  ],
   "author": "Samuel Fabrizio",
   "license": "MIT",
   "dependencies": {
@@ -30,9 +35,7 @@
     "url": "git@github.com:sfabrizio/bloggy.git"
   },
   "devDependencies": {
-    "jasmine-node": "^1.14.5",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.1",
+    "babel-eslint": "^6.1.0",
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.2",
     "babel-plugin-react-html-attrs": "^2.0.0",
@@ -41,8 +44,10 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
-    "babel-eslint": "^6.1.0",
     "eslint": "^2.13.0",
-    "eslint-loader": "^1.3.0"
+    "eslint-loader": "^1.5.0",
+    "jasmine-node": "^1.14.5",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.1"
   }
 }
