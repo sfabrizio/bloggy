@@ -1,12 +1,13 @@
 var debug = process.env.NODE_ENV !== 'production',
+    path = require('path'),
     webpack = require('webpack');
 
 module.exports = {
     context: __dirname,
     devtool: debug ? 'inline-sourcemap' : null,
-    entry: __dirname + '/client/app/client.js',
+    entry: path.join(__dirname, '/client/app/client.js'),
     output: {
-        path: __dirname + '/client/dist',
+        path: path.join(__dirname, '/client/dist'),
         filename: 'client.min.js'
     },
     module: {
