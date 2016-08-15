@@ -51,8 +51,8 @@ export function filterBlog(query) {
 
 //sort json array.
 function sortByKey(array, key) {
-    return array.sort(function(a, b) {
-        var x = a[key],
+    return array.sort( (a, b) => {
+        const x = a[key],
             y = b[key];
 
         return ((x < y) ? -1 : ((x > y) ? 1 : 0));
