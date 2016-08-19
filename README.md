@@ -66,10 +66,9 @@ TODO (WIP)
 
 - frontend:
  - change from flux to redux
- - fix some react component complesity
+ - improve some react components
  - add SASS and migrate the existing CSS code.
 
-- fix eslint warnings
 - add unit testing.
 
 - keep working in new features
