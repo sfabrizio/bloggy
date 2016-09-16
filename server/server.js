@@ -15,7 +15,7 @@ app.set('port', (process.env.PORT || 3000));
 server = http.createServer(app);
 
 server.listen(app.get('port'), function () {
-    console.log( "Server started; listening on port " + app.get('port') );
+    console.log( 'Server started; listening on port ', app.get('port') );
 });
 
 exports.closeServer = function(){
