@@ -1,5 +1,6 @@
 var fs = require('fs'),
-    jsonPath = './data.json',
+    path = require('path'),
+    jsonPath = path.join(__dirname , '../data.json'),
     handlers = {},
     utils = require('./utils');
 
@@ -9,10 +10,8 @@ handlers.index = function ( req, res ) {
 
 handlers.getAll = function ( req, res) {
     fs.readFile(jsonPath, 'utf8', function (err, data) {
-        var obj = JSON.parse(data);
-
         if (err) { throw err; }
-        res.json(obj);
+        res.json( JSON.parse(data) );
     });
 };
 
