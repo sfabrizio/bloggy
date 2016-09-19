@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
-import './components/Layout';
-import 'react';
+import React from 'react';
+import Layout from './components/Layout';
 
 const app = document.getElementById('app');
 

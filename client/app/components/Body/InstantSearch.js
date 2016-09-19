@@ -1,7 +1,7 @@
 import React from 'react';
 import BlogStore from '../../stores/BlogStore';
-import './SearchBox';
-import './Body';
+import SearchBox from './SearchBox';
+import Body from './Body';
 
 export default class InstantSearch extends React.Component {
     constructor() {

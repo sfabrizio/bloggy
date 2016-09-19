@@ -1,9 +1,9 @@
 import React from 'react';
 import BlogStore from '../../stores/BlogStore';
 import * as BlogActions from '../../actions/BlogActions';
-import './BlogItemRow';
-import './BlogEntryCreator';
-import './Loading';
+import BlogItemRow from './BlogItemRow';
+import BlogEntryCreator from './BlogEntryCreator';
+import Loading from './Loading';
 
 
 export default class Body extends React.Component {

@@ -1,10 +1,10 @@
 import React from 'react';
 import * as BlogActions from '../../actions/BlogActions';
-import '../Button/DeleteButton';
-import '../Button/EditButton';
-import '../Button/SaveButton';
-import '../Button/CancelButton';
-import '../Button/ShowButton';
+import DeleteButton from '../Button/DeleteButton';
+import EditButton from '../Button/EditButton';
+import SaveButton from '../Button/SaveButton';
+import CancelButton from '../Button/CancelButton';
+import ShowButton from '../Button/ShowButton';
 
 export default class Body extends React.Component {
     constructor() {

@@ -1,6 +1,5 @@
 import React from 'react';
-
-import '../Button/NewButton';
+import NewButton from '../Button/NewButton';
 
 export default class BlogEntryCreator extends React.Component {
     constructor() {
