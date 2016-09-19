@@ -7,7 +7,7 @@
     "start": "node server/server.js",
     "server": "webpack && node ./server/server.js",
     "test": "jasmine-node spec",
-    "dev": "./node_modules/.bin/webpack-dev-server --content-base public --inline --hot"
+    "dev": "./node_modules/.bin/webpack-dev-server --content-base client/dist --inline --hot"
   },
   "engines": {
     "node": "6.3.1"
