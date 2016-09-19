@@ -1,8 +1,9 @@
 {
-  "ecmaFeatures": {
-    "globalReturn": true,
-    "modules": true,
-    "jsx": true
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true,
+    }
   },
   "extends": [
     "eslint:recommended"
@@ -33,7 +34,7 @@
     "no-extra-semi": 1,
     "no-undef": 1,
     "no-unreachable": 1,
-    "no-unused-vars": [1, { "vars": "all", "args": "none" }],
+    "no-unused-vars": [0, { "vars": "all", "args": "none" ,"ignore": ["React"]}],
     "no-use-before-define": 0,
     "no-redeclare": [1, { "builtinGlobals": true }],
     "no-mixed-spaces-and-tabs": [1, "smart-tabs"],
