@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/sfabrizio/bloggy.svg?branch=master)](https://travis-ci.org/sfabrizio/bloggy) [![bitHound Overall Score](https://www.bithound.io/github/sfabrizio/bloggy/badges/score.svg)](https://www.bithound.io/github/sfabrizio/bloggy)
 [![Turbo Commit](https://img.shields.io/badge/Turbo_Commit-on-3DD1F2.svg)](https://github.com/labs-js/turbo-commit/blob/master/README.md)
-
+[![Known Vulnerabilities](https://snyk.io/test/github/sfabrizio/bloggy/badge.svg)](https://snyk.io/test/github/sfabrizio/bloggy)
 
 # Bloggy
 
